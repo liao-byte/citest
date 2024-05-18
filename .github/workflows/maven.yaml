@@ -31,7 +31,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: 打包镜像
         run: |
-            ssh root@${{ secrets.HOST }} "
+            ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "
               cd /github/citest
               docker  build  -t citest:latest  . 
             "
