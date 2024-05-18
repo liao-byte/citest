@@ -25,13 +25,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
       - name: ls -a via ssh
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: ls -a
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME}}
-          port: 22
-          privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
+        run: |
+          sshpass -p ${{secrets.PASSWORD}} ssh ${{secrets.USERNAME}}@${{secrets.HOST}} 'w'  -o StrictHostChecking=no
+          ls 
 
