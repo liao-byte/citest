@@ -29,5 +29,3 @@ jobs:
       - name: ls -a via ssh
         run: ｜
           sshpass -v -p ${{secrets.PASSWORD}}  ssh -o StrictHostKeyChecking=no root@${{secrets.HOST}}
-          cd /gihub/cutest
-          ls
