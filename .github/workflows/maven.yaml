@@ -32,7 +32,5 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          # 连接阿里云服务器
           ssh $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
-          # 将打包后的JAR文件上传到服务器
           scp target/*.jar $USERNAME@$HOST:$PROJECT_PATH
