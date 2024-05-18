@@ -27,4 +27,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: ls -a via ssh
-        run: sshpass -p ${{secrets.PASSWORD}} ssh ${{secrets.USERNAME}}@${{secrets.HOST}} 'w'  -o StrictHostChecking=no
+        run: ｜
+          sshpass -v -p ${{secrets.PASSWORD}}  ssh -o StrictHostKeyChecking=no root@${{secrets.HOST}}
+          cd /gihub/cutest
+          ls
