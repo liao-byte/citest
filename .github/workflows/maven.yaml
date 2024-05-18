@@ -32,5 +32,5 @@ jobs:
         run: ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: upload file to ssh
         run: |
-          ssh -vv $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
-          scp -vv target/*.jar $USERNAME@$HOST:$PROJECT_PATH
+          ssh -vv root@${{ secrets.SERVER_HOST }} "mkdir -p $PROJECT_PATH"
+          scp -vv target/*.jar ${{secrets.USERNAME}}@${{ secrets.HOST }}:${{ secrets.PROJECT_PATH }}
