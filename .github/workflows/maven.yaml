@@ -31,6 +31,7 @@ jobs:
             username: ${{secrets.USERNAME}}
             port: 22
             password: ${{secrets.PASSWORD}}
-            script:
+            script: ｜
+              cd /github/citest
               ls -a
 
