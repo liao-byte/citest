@@ -28,14 +28,8 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avzr --delete"
-          # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
-          SOURCE: "./"
-          # 服务器域名/IP
-          REMOTE_HOST: ${{ secrets.HOST }}
-          # 服务器默认用户名为root
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          # 目标目录
-          TARGET: ${{ secrets.PROJECT_PATH }}
-          # 排除目录
-          EXCLUDE: "./idea/"
+          SOURCE: "target/"
+          REMOTE_HOST: 114.132.233.79
+          REMOTE_PORT: 22
+          REMOTE_USER: root
+          TARGET: "/github/citest"
