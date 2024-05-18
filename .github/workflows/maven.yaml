@@ -10,7 +10,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 8
@@ -21,4 +20,4 @@ jobs:
       - name: maven打包
         run: mvn clean install
       - name: 上传jar包和启动脚本到服务器中
-        run: sshpass -p ${{secrets.PASSWORD}} scp -r -o StrictHostKeyChecking=no ./target/citest-0.0.1-SNAPSHOT.jar  root@${{secrets.HOST}}:/github/citest
+        run: sshpass -p ${{secrets.PASSWORD}} scp -r -o StrictHostKeyChecking=no ./target/citest-0.0.1-SNAPSHOT.jar ./Dockerfile root@${{secrets.HOST}}:/github/citest
