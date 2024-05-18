@@ -27,7 +27,7 @@ jobs:
       - name: deploy
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-avzr --delete"
           # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
           SOURCE: "./"
