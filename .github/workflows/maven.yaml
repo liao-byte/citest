@@ -24,13 +24,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to tenxyun
-        env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+      - name: Connect to server
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup knownhosts
+        run: ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+      - name: upload file to ssh
         run: |
           ssh -vv $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
           scp -vv target/*.jar $USERNAME@$HOST:$PROJECT_PATH
