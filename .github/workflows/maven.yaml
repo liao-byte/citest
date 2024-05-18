@@ -38,4 +38,4 @@ jobs:
           # 目标目录
           TARGET: ${{ secrets.PROJECT_PATH }}
           # 排除目录
-          EXCLUDE: "/node_modules/"
+          EXCLUDE: "./idea/"
