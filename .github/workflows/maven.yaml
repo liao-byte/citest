@@ -20,3 +20,19 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn clean install
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to tenxyun
+        env:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+        run: |
+          # 连接阿里云服务器
+          ssh $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
+          # 将打包后的JAR文件上传到服务器
+          scp target/*.jar $USERNAME@$HOST:$PROJECT_PATH
