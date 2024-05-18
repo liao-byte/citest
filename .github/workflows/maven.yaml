@@ -1,4 +1,4 @@
-name: Spring Boot CI/CD
+name: ci测试
 
 on:
   push:
@@ -32,5 +32,5 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          ssh $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
-          scp target/*.jar $USERNAME@$HOST:$PROJECT_PATH
+          ssh -vv $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
+          scp -vv target/*.jar $USERNAME@$HOST:$PROJECT_PATH
