@@ -33,5 +33,5 @@ jobs:
         run: |
             ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "
               cd /github/citest
-              docker  build  -t citest:latest  . 
+              docker  build -t citest:latest  . 
             "
