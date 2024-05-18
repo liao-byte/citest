@@ -30,7 +30,7 @@ jobs:
             host: ${{secrets.HOST}}
             username: ${{secrets.USERNAME}}
             port: 22
-            password: ${{secrets.SERVER_PASSWORD}}
+            password: ${{secrets.PASSWORD}}
             script:
               cd /github/citest
               ls
