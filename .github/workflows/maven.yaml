@@ -29,7 +29,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Setup knownhosts
-        run: ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        run: ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: upload file to ssh
         run: |
           ssh -vv $USERNAME@$HOST "mkdir -p $PROJECT_PATH"
