@@ -33,5 +33,5 @@ jobs:
             password: ${{secrets.PASSWORD}}
             script:
               cd /github/citest
-              ls
+              ls -a
 
