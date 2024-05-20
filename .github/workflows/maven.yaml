@@ -39,4 +39,4 @@ jobs:
           username: ${{secrets.USERNAME}}
           port: 22
           password: ${{secrets.PASSWORD}}
-          script: docker run -d --name citest -p 8080:8080 citest
+          script: docker stop citesst && docker rm citest && docker run -d --name citest -p 8080:8080 citest
