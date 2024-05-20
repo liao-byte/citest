@@ -39,11 +39,11 @@ jobs:
           username: ${{secrets.USERNAME}}
           port: 22
           password: ${{secrets.PASSWORD}}
-          script: ｜
-            if docker ps -a | grep -q 'citest';then
+          script:
+            "if docker ps -a | grep -q 'citest';then
             docker stop citesst
             docker rm -f citest
-            fi
+            fi"
       - name: 创建容器
         uses: appleboy/ssh-action@master
         with:
